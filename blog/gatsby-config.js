@@ -2,6 +2,8 @@
  * Configure your Gatsby site with this file.
  *
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
+ * 
+ * 
  */
 
 /**
@@ -15,6 +17,13 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
+  {
+  resolve: `gatsby-source-contentful`,
+  options: {
+    spaceId: `xyioufj2k5pc`,
+    accessToken: `3-CXjsS9FAm3AvkcYcfADmp5W8nZ3nRLGkt68_1qyzU`,
+  },
+},
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
