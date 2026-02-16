@@ -19,12 +19,12 @@ module.exports = {
     author: `@gatsbyjs`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
-  plugins: [
+  plugins: [ 
   {
   resolve: `gatsby-source-contentful`,
   options: {
-    spaceId: `${process.env.SPACE_ID}`,
-    accessToken: `${process.env.ACCESS_TOKEN}`,
+    spaceId: `xyioufj2k5pc`,
+    accessToken: `3-CXjsS9FAm3AvkcYcfADmp5W8nZ3nRLGkt68_1qyzU`,
   },
 },
     `gatsby-plugin-image`,
@@ -37,6 +37,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

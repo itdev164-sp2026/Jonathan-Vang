@@ -1,19 +1,32 @@
-import React from "react";
-import { graphql } from "gatsby";
+import * as React from "react"
+import { graphql } from "gatsby"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-export default function BlogPost({ data }) {
+import Layout from "../components/layout"
+
+const BlogPost = ({ data }) => {
+  const post = data.contentfulBlogPost
+  const body = JSON.parse(post.body.raw)
+
   return (
-    <main style={{ padding: 20 }}>
-      <h1>{data.contentfulBlogPost.title}</h1>
-    </main>
-  );
+    <Layout>
+      <h1>{post.title}</h1>
+
+      {documentToReactComponents(body)}
+
+    </Layout>
+  )
 }
 
 export const query = graphql`
-  query ($slug: String!) {
-    contentfulBlogPost(slug: { eq: $slug }) {
-      title
+query BlogPostTemplate($slug: String!) {
+  contentfulBlogPost(slug: { eq: $slug }) {
+    title
+    body {
+      raw
     }
   }
-`;
+}
+`
 
+export default BlogPost

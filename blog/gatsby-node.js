@@ -1,34 +1,29 @@
-const path = require("path");
+const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
   const result = await graphql(`
     {
       allContentfulBlogPost {
-        nodes {
-          id
-          slug
+        edges {
+          node {
+            slug
+          }
         }
       }
     }
-  `);
+  `)
 
-  if (result.errors) {
-    throw result.errors;
-  }
+  const blogPostTemplate = path.resolve("./src/templates/blog-post.js")
 
-  const templatePath = path.resolve(__dirname, "src", "templates", "blog-post.js");
-  console.log("Using template:", templatePath);
-
-  result.data.allContentfulBlogPost.nodes.forEach((post) => {
+  result.data.allContentfulBlogPost.edges.forEach(edge => {
     createPage({
-      path: `/blog/${post.slug}`,
-      component: templatePath,
+      path: `/blog/${edge.node.slug}`,
+      component: blogPostTemplate,
       context: {
-        slug: post.slug,
+        slug: edge.node.slug,
       },
-    });
-  });
-};
-
+    })
+  })
+}
