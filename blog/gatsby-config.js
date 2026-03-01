@@ -20,6 +20,8 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [ 
+    `gatsby-plugin-image`,
+  `gatsby-plugin-styled-components`,
   {
   resolve: `gatsby-source-contentful`,
   options: {
